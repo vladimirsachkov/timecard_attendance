@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  min-height: 85px;
+  background: #ddd;
+  display: flex;
+  flex-direction: column;
+}
+header h1 {
+  margin-top: 19px;
+}
+header .container {
+  display: flex;
+  justify-content: space-between;
+}
+header .container img {
+  margin-top: 5px;
+  height: 70px;
+  width: 80px;
+}
+
+.container {
+  position: relative;
+  width: 1100px;
+  margin: 0 auto;
+}
+
+.table {
+  margin-top: 70px;
+}
+.table #formSearchByFullName {
+  width: 241px;
+  margin: auto;
+}
+.table table {
+  width: 100%;
+}
+.table table td {
+  text-align: center;
+}
+.table table tr[typeDay=business_trip] {
+  background: red;
+}
+.table table tr[typeDay=vacation] {
+  background: blue;
+}
+.table table tr[typeDay=working_day] {
+  background: green;
+}
+.table table tr[typeDay=day_off] {
+  background: gray;
+}
+.table table tr[typeDay=sick_leave] {
+  background: orange;
+}
+
+footer {
+  background: #ddd;
+  height: 70px;
+  margin-top: auto;
+}
+footer .author {
+  margin-top: 34px;
+}/*# sourceMappingURL=style.css.map */

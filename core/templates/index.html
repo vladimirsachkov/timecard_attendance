@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <title>Табель учета приема</title>
+</head>
+<body>
+<div class="page">
+    <header>
+        <div class="container">
+            <h1>Табель учета приема</h1>
+        </div>
+    </header>
+
+    <section class="table">
+        <div class="container">
+            <form id="formSearchByFullName" action="/" method="get">
+                <label>ФИО</label>
+                <input type="text">
+                <input type="submit" value="Поиск">
+            </form>
+            <table>
+                <tr>
+                    <th>Дата</th>
+                    <th>ФИО</th>
+                    <th>Тип Дня</th>
+                </tr>
+                {% for row in rows %}
+                    <tr style="background: {{ row.day_type.css_row_color }}">
+                        <th>{{ row.date }}</th>
+                        <th>{{ row.employer }}</th>
+                        <th>{{ row.day_type }}</th>
+                    </tr>
+                {% endfor %}
+{#                <tr typeDay="business_trip">#}
+{#                    <td>01.01.2024</td>#}
+{#                    <td>Сачков Владимир Игоревич</td>#}
+{#                    <td>Командировка</td>#}
+{#                </tr>#}
+{#                <tr typeDay="vacation">#}
+{#                    <td>02.01.2024</td>#}
+{#                    <td>Сачков Владимир Игоревич</td>#}
+{#                    <td>Отпуск</td>#}
+{#                </tr>#}
+{#                <tr typeDay="working_day">#}
+{#                    <td>03.01.2024</td>#}
+{#                    <td>Сачков Владимир Игоревич</td>#}
+{#                    <td>Рабочий день</td>#}
+{#                </tr>#}
+{#                <tr typeDay="day_off">#}
+{#                    <td>04.01.2024</td>#}
+{#                    <td>Сачков Владимир Игоревич</td>#}
+{#                    <td>Выходной</td>#}
+{#                </tr>#}
+{#                <tr typeDay="sick_leave">#}
+{#                    <td>05.01.2024</td>#}
+{#                    <td>Сачков Владимир Игоревич</td>#}
+{#                    <td>Больничный</td>#}
+{#                </tr>#}
+            </table>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="author">
+                <p>МТУСИ</p>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

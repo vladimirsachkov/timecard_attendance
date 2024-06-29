@@ -23,8 +23,8 @@ class EmployeeAdmin(admin.ModelAdmin):
 
 
 class DayTypeAdmin(admin.ModelAdmin):
-    list_display = ['name', 'mark']
-    fields = ['id', 'name', 'mark']
+    list_display = ['name', 'mark', 'css_row_color']
+    fields = ['id', 'name', 'mark', 'css_row_color']
     readonly_fields = ['id']
 
 

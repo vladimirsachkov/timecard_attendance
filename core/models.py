@@ -19,17 +19,24 @@ class Department(models.Model):
         db_table = 'department'
         verbose_name_plural = 'Подразделение'
 
+    def __str__(self):
+        return self.name
+
 
 class DayType(models.Model):
     id = models.CharField(primary_key=True, default=uuid.uuid4, max_length=100, db_comment='')
     name = models.CharField(db_column='Name', max_length=100, db_comment='', verbose_name='Наименование')  # Field name made lowercase.
     mark = models.CharField(unique=True, max_length=100, db_comment='', verbose_name='Краткое обозначение')
+    css_row_color = models.CharField(max_length=100, blank=True, null=True, verbose_name='Цвет css')
 
     class Meta:
         managed = False
         db_table = 'day_type'
         verbose_name_plural = 'Тип дня'
         db_table_comment = ''
+
+    def __str__(self):
+        return self.name
 
 
 class Employee(models.Model):
@@ -48,11 +55,14 @@ class Employee(models.Model):
         verbose_name_plural = 'Сотрудник'
         db_table_comment = 'Сотрудник'
 
+    def __str__(self):
+        return self.name + " " + self.surname + " " + self.patronymic
+
 
 class Timecard(models.Model):
     id = models.CharField(primary_key=True, default=uuid.uuid4, max_length=100, db_comment='')
     employer = models.ForeignKey(Employee, models.DO_NOTHING, db_comment='', verbose_name='Сотрудник')
-    date = models.CharField(max_length=100, db_comment='', verbose_name='Дата')
+    date = models.DateField(max_length=100, db_comment='', verbose_name='Дата')
     day_type = models.ForeignKey(DayType, models.DO_NOTHING, db_comment='', verbose_name='Тип дня')
 
     class Meta:
