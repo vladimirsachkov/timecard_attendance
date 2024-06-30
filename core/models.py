@@ -40,6 +40,7 @@ class DayType(models.Model):
 
 
 class Employee(models.Model):
+
     id = models.CharField(primary_key=True, default=uuid.uuid4, max_length=100, db_comment='')
     name = models.CharField(max_length=100, db_comment='', verbose_name='Имя')
     surname = models.CharField(max_length=100, db_comment='', verbose_name='Фамилия')
@@ -49,6 +50,9 @@ class Employee(models.Model):
     department = models.ForeignKey(Department, models.DO_NOTHING, db_column='id_department', db_comment='',
                                    verbose_name='Подразделение')
 
+    def get_full_name(self):
+        return self.surname + " " + self.name + " " + self.patronymic
+
     class Meta:
         managed = False
         db_table = 'employee'
@@ -56,7 +60,7 @@ class Employee(models.Model):
         db_table_comment = 'Сотрудник'
 
     def __str__(self):
-        return self.name + " " + self.surname + " " + self.patronymic
+        return self.surname + " " + self.name + " " + self.patronymic
 
 
 class Timecard(models.Model):

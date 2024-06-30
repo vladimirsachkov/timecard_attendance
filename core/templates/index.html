@@ -5,21 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static "css/style.css" %}">
-    <title>Табель учета приема</title>
+    <title>Табель учета посещения сотрудников</title>
 </head>
 <body>
 <div class="page">
     <header>
         <div class="container">
-            <h1>Табель учета приема</h1>
+            <h1>Табель учета посещения сотрудников</h1>
         </div>
     </header>
 
     <section class="table">
         <div class="container">
-            <form id="formSearchByFullName" action="/" method="get">
+            <form id="formSearchByFullName" action="/filterByFullName/filterByFullName/" method="get">
                 <label>ФИО</label>
-                <input type="text">
+                <input name="full_name" type="text" value="{{ full_name }}">
                 <input type="submit" value="Поиск">
             </form>
             <table>
@@ -35,31 +35,6 @@
                         <th>{{ row.day_type }}</th>
                     </tr>
                 {% endfor %}
-{#                <tr typeDay="business_trip">#}
-{#                    <td>01.01.2024</td>#}
-{#                    <td>Сачков Владимир Игоревич</td>#}
-{#                    <td>Командировка</td>#}
-{#                </tr>#}
-{#                <tr typeDay="vacation">#}
-{#                    <td>02.01.2024</td>#}
-{#                    <td>Сачков Владимир Игоревич</td>#}
-{#                    <td>Отпуск</td>#}
-{#                </tr>#}
-{#                <tr typeDay="working_day">#}
-{#                    <td>03.01.2024</td>#}
-{#                    <td>Сачков Владимир Игоревич</td>#}
-{#                    <td>Рабочий день</td>#}
-{#                </tr>#}
-{#                <tr typeDay="day_off">#}
-{#                    <td>04.01.2024</td>#}
-{#                    <td>Сачков Владимир Игоревич</td>#}
-{#                    <td>Выходной</td>#}
-{#                </tr>#}
-{#                <tr typeDay="sick_leave">#}
-{#                    <td>05.01.2024</td>#}
-{#                    <td>Сачков Владимир Игоревич</td>#}
-{#                    <td>Больничный</td>#}
-{#                </tr>#}
             </table>
         </div>
     </section>
